@@ -87,6 +87,22 @@ h2 {
   line-height: 1.55;
 }
 
+.education-notice {
+  max-width: 760px;
+  margin: 0 0 14px;
+  border: 1px solid rgba(242, 189, 69, 0.42);
+  border-left: 5px solid var(--gold);
+  border-radius: 8px;
+  background: rgba(242, 189, 69, 0.11);
+  padding: 12px 14px;
+  color: #fff1c2;
+  line-height: 1.45;
+}
+
+.education-notice strong {
+  color: #ffe39a;
+}
+
 .status-strip {
   display: grid;
   grid-template-columns: repeat(2, minmax(120px, 1fr));
