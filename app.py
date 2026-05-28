@@ -487,15 +487,15 @@ def analyze(payload: dict[str, Any]) -> dict[str, Any]:
 
 class Handler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:
-    parsed = urlparse(self.path)
-    if parsed.path in {"/", "/index.html"}:
-        self.send_file(ROOT / "index.html", "text/html; charset=utf-8")
-    elif parsed.path in {"/styles.css", "/static/styles.css"}:
-        self.send_file(ROOT / "styles.css", "text/css; charset=utf-8")
-    elif parsed.path in {"/app.js", "/static/app.js"}:
-        self.send_file(ROOT / "app.js", "application/javascript; charset=utf-8")
-    else:
-        self.send_error(HTTPStatus.NOT_FOUND)
+        parsed = urlparse(self.path)
+        if parsed.path in {"/", "/index.html"}:
+            self.send_file(STATIC_DIR / "index.html", "text/html; charset=utf-8")
+        elif parsed.path == "/static/styles.css":
+            self.send_file(STATIC_DIR / "styles.css", "text/css; charset=utf-8")
+        elif parsed.path == "/static/app.js":
+            self.send_file(STATIC_DIR / "app.js", "application/javascript; charset=utf-8")
+        else:
+            self.send_error(HTTPStatus.NOT_FOUND)
 
     def do_POST(self) -> None:
         if urlparse(self.path).path != "/api/analyze":
